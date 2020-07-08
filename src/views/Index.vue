@@ -1,6 +1,6 @@
 <!--App.vue开放窗口给Index.vue,Index.vue开放窗口给p1，p2，p3，p4-->
 <template>
-    <el-container style="height: 500px; border: 1px solid #eee">
+    <el-container style=" border: 1px solid #eee">
         <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
             <el-menu :default-openeds="['0','1']" router>
                 <el-submenu v-for="(item,index) in $router.options.routes" :index="index+''" >
@@ -12,7 +12,7 @@
             </el-menu>
         </el-aside>
 
-        <el-main>
+        <el-main style="height: auto">
             <router-view></router-view>
         </el-main>
     </el-container>

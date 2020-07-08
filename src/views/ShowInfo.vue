@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>演进信息提取及可视化</h1>
-        <div>{{data}}</div>
         <el-table
                 :data="tableData"
                 border
@@ -21,16 +20,6 @@
                     label="简介"
                    >
             </el-table-column>
-<!--            <el-table-column-->
-<!--                    prop="params"-->
-<!--                    label="属性集合"-->
-<!--                    width="120">-->
-<!--            </el-table-column>-->
-<!--            <el-table-column-->
-<!--                    prop="events"-->
-<!--                    label="事件结合"-->
-<!--                    width="120">-->
-<!--            </el-table-column>-->
 
             <el-table-column
                     fixed="right"

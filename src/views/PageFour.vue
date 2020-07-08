@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>区划演进</h1>
+        <h1>区划关联</h1>
         <viewer :images="handImg">
             <img v-for="src in handImg" :src="src" :key="src" width="50" height="50px">
         </viewer>
@@ -13,7 +13,7 @@
         name: "PageFour",
         data() {
             return {
-                handImg: ["http://localhost:8080/image/256.jpg"]
+                handImg: []
             }
         }
     }

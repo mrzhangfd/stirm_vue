@@ -1,40 +1,47 @@
 <template>
     <div>
         <h1>常规操作：基础数据（信息对象、演进信息、关联信息）的增删改操作。</h1>
-        <div>
-            <el-input
-                    type="textarea"
-                    autosize
-                    placeholder="曹操"
-                    v-model="prefix"
-                    style="width: 200px">
-            </el-input>
-            <el-button type="primary" icon="el-icon-search" @click="searchObject()">搜索</el-button>
-            <el-button type="primary" icon="el-icon-search" @click="addObject()">新增</el-button>
-        </div>
-        <br>
-        <br>
-        <div>
-            <el-form ref="form" :model="form" label-width="80px" v-if="showAddView">
-                <el-form-item label="对象名称" label-width="100px">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
-                <el-form-item label="对象描述" label-width="100px">
-                    <el-input v-model="form.desc"></el-input>
-                </el-form-item>
-                <el-form-item label="对象简介" label-width="100px">
-                    <el-input v-model="form.intro" type="textarea"></el-input>
-                </el-form-item>
 
-                <!--                <el-form-item label="活动形式">-->
-                <!--                    <el-input type="textarea" v-model="form.desc"></el-input>-->
-                <!--                </el-form-item>-->
-                <el-form-item>
-                    <el-button type="primary" @click="onSubmit(form)">添加</el-button>
-                    <el-button>取消</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
+        <el-form :inline="true">
+            <el-form-item>
+                <el-input
+                        type="textarea"
+                        autosize
+                        placeholder="曹操"
+                        v-model="prefix"
+                        style="width: 200px">
+                </el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary" icon="el-icon-search" @click="searchObject()">搜索</el-button>
+                <el-button type="primary" icon="el-icon-search" @click="addObject()">新增</el-button>
+            </el-form-item>
+        </el-form>
+
+        <br>
+        <br>
+
+        <el-form ref="form" :model="form" label-width="80px" v-if="showAddView" inline="true">
+            <el-form-item label="对象名称" label-width="100px">
+                <el-input v-model="form.name" style="width: auto"></el-input>
+            </el-form-item>
+            <el-form-item label="对象描述" label-width="100px">
+                <el-input v-model="form.desc" style="width: auto"></el-input>
+            </el-form-item>
+            <el-form-item label="对象简介" label-width="100px">
+                <el-input v-model="form.intro" type="textarea" style="width: auto"></el-input>
+            </el-form-item>
+
+            <!--                <el-form-item label="活动形式">-->
+            <!--                    <el-input type="textarea" v-model="form.desc"></el-input>-->
+            <!--                </el-form-item>-->
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit(form)">添加</el-button>
+                <el-button>取消</el-button>
+            </el-form-item>
+        </el-form>
+
 
     </div>
 
@@ -99,13 +106,6 @@
             onSubmit(form) {
                 alert(form.intro)
                 console.log(form.name)
-                axios.post("http://localhost:8080/addobjectlist", {
-                    params: {
-                        prefix: _this.prefix
-                    }
-
-                })
-            }
                 // axios.post("http://localhost:8080/addobjectlist", {
                 //     params: {
                 //         prefix: _this.prefix
@@ -113,8 +113,15 @@
                 //
                 // })
             }
-
+            // axios.post("http://localhost:8080/addobjectlist", {
+            //     params: {
+            //         prefix: _this.prefix
+            //     }
+            //
+            // })
         }
+
+    }
 </script>
 
 <style scoped>

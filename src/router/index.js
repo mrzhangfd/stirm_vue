@@ -3,10 +3,10 @@ import VueRouter from 'vue-router'
 import Index from '~/views/Index'
 import MainView from "~/views/MainView";
 import ShowInfo from "~/views/ShowInfo";
-import PageThree from "~/views/PageThree";
 import PageFour from "~/views/PageFour";
 import AddObject from "~/views/AddObject";
 import test from "~/views/test";
+import ContourRele from "~/views/ContourRele";
 //引入-》使用
 Vue.use(VueRouter)
 
@@ -42,7 +42,7 @@ const routes = [
             {
                 path: '/p3',
                 name: '页面3',
-                component: PageThree,
+                component: ContourRele,
             },
             {
                 path: '/p4',

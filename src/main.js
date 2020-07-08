@@ -15,7 +15,7 @@ Vue.use(Viewer, {
     scalable:true,//图片是否可翻转
     rotatable:true,//图片是否可旋转
     tooltip:true,//显示缩放百分比
-    navbar:true,//显示缩略图导航
+    navbar:false,//显示缩略图导航
     loop:true,
     loading:true
 
