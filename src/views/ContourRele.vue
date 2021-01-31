@@ -278,6 +278,7 @@
                 }).catch(function (error) {
                     console.log(error)
                 })
+                _this.searchMapRele()
             },
             searchMapRele(){
                 const _this = this
@@ -296,8 +297,6 @@
                 }).catch(function (error) {
                     console.log(error)
                 })
-
-
             },
 
             //监听year的变化，当输入的年代变化时候，右侧的区划信息相应的清空。

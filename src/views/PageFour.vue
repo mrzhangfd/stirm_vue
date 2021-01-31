@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>区划关联</h1>
+        <h1></h1>
         <viewer :images="handImg">
             <img v-for="src in handImg" :src="src" :key="src" width="50" height="50px">
         </viewer>
