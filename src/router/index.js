@@ -4,6 +4,7 @@ import Index from '~/views/Index'
 import MainView from "~/views/MainView";
 import ShowInfo from "~/views/ShowInfo";
 import PageFour from "~/views/PageFour";
+import PageFive from "~/views/PageFive"
 import AddObject from "~/views/AddObject";
 import test from "~/views/test";
 import ContourRele from "~/views/ContourRele";
@@ -41,13 +42,18 @@ const routes = [
         children: [
             {
                 path: '/p3',
-                name: '页面3',
+                name: '区划信息交互式查询及可视化',
                 component: ContourRele,
             },
             {
                 path: '/p4',
-                name: '页面4',
+                name: '史上今日',
                 component: PageFour,
+            },
+            {
+                path: '/p5',
+                name: '轨迹可视化',
+                component: PageFive,
             },
             {
                 path: '/test',

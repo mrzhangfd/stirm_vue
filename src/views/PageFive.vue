@@ -1,22 +1,14 @@
 <template>
 
   <div>
-    <h1>史上今日</h1>
+    <h1>信息对象时空轨迹</h1>
     <el-form ref="form" label-width="100px" :inline="true">
 
-      <el-form-item label="请输入月份">
+      <el-form-item label="信息对象">
 
         <el-input
-            placeholder="请输入月份"
-            v-model="month"
-            clearable>
-        </el-input>
-      </el-form-item>
-
-      <el-form-item label="请输入日期">
-        <el-input
-            placeholder="请输入日期"
-            v-model="day"
+            placeholder="信息对象"
+            v-model="objectName"
             clearable>
         </el-input>
       </el-form-item>
@@ -26,29 +18,35 @@
       </el-form-item>
     </el-form>
     <el-table
-        :data="todayEventTableData"
+        :data="ObjectTrackTableData"
         border
         style="width: 100%">
       <el-table-column
           prop="ts"
           label="时间"
+          width="100"
+      >
+      </el-table-column>
+
+      <el-table-column
+          prop="site"
+          label="地点"
+          width="100"
       >
       </el-table-column>
 
       <el-table-column
           prop="details"
           label="详情"
-      >
-      </el-table-column>
-      <el-table-column
-          prop="site"
-          label="地点"
+          width="300"
       >
       </el-table-column>
 
+
       <el-table-column
-          prop="objectId"
-          label="信息对象"
+          prop="affect"
+          label="结果"
+          width="300"
       >
       </el-table-column>
 
@@ -63,14 +61,14 @@ export default {
   name: "PageFour",
   data() {
     return {
-      month: '',
-      day: '',
-      todayEventTableData:[
+      objectName: '',
+
+      ObjectTrackTableData:[
         {
           ts: '',
-          details: '',
           site:'',
-          objectId: '',
+          details: '',
+          affect:'',
         }
       ],
     }
@@ -79,18 +77,17 @@ export default {
 
     onSubmit() {
       const _this = this
-      console.log(_this.month+" "+_this.day )
-      axios.get("http://localhost:8080/event/gettoday", {
+
+      axios.get("http://localhost:8080/getobjecttimeline", {
         params: {
-          month: _this.month,
-          day: _this.day
+          name:_this.objectName
         }
       }).then(function (resp) {
-        //console.log(resp.data)
+        console.log(resp.data)
         if (resp.data.code === 200) {
           console.log(resp.data.data)
           //_this.viewShow = true
-          _this.todayEventTableData=resp.data.data
+          _this.ObjectTrackTableData=resp.data.data.events
 
         }
       }).catch(function (error) {

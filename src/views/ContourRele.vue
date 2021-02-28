@@ -38,6 +38,11 @@
                     查询区划演进
                 </el-button>
             </el-form-item>
+          <el-form-item>
+            <el-button @click="searchMapEvolu" type="primary" >
+              查询区划演进原因
+            </el-button>
+          </el-form-item>
 
         </el-form >
 
@@ -76,18 +81,26 @@
             <el-table-column
                     prop="preContour"
                     label="前序区划"
-            ></el-table-column>
+            >
+              <span slot-scope="scope">
+                    <span v-for="item in scope.row.preContour">{{ item +' ' }}</span>
+                </span>
+            </el-table-column>
 
             <el-table-column
                     prop="nextContourYear"
                     label="后序时间"
             >
+
             </el-table-column>
 
             <el-table-column
                     prop="nextContour"
                     label="后序区划"
             >
+              <span slot-scope="scope">
+                    <span v-for="item in scope.row.nextContour">{{ item +' ' }}</span>
+                </span>
             </el-table-column>
 
             <el-table-column
@@ -110,6 +123,25 @@
 
             <img v-for="src in contourReleImg" :src="src" :key="src" width="400" height="233px">
         </viewer>
+
+      <el-table
+          :data="evoluTableData"
+          border
+
+          style="width: 100%">
+        <el-table-column
+            prop="preEvolution"
+            label="前因"
+        >
+        </el-table-column>
+
+        <el-table-column
+            prop="nextEvolution"
+            label="后果"
+        >
+        </el-table-column>
+
+      </el-table>
     </div>
 
 </template>
@@ -124,6 +156,16 @@
                 years: [],
                 contours: [],
                 formatData: [],
+                evoluTableData:[
+                  {
+                    preContourYear: '',
+                    preContour: [],
+                    preEvolution:'',
+                    nextContourYear: '',
+                    nextContour: [],
+                    nextEvolution:'',
+                  }
+                ],
                 tableData: [{
                     contourYear: '',
                     contourName: '',
@@ -264,21 +306,15 @@
                 },).then(function (resp) {
                     //console.log(resp.data)
                     if (resp.data.code === 200) {
-                        console.log(resp.data.data)
+                        //console.log(resp.data.data)
                         _this.tableData = resp.data.data
-                        // _this.tableData[0].contourName = resp.data.data.contourName
-                        // _this.tableData[0].contourYear = resp.data.data.contourYear
-                        // _this.tableData[0].contourArea = resp.data.data.contourArea
-                        // _this.tableData[0].contourPerimeter = resp.data.data.contourPerimeter
-                        // _this.tableData[0].preContourYear = resp.data.data.preContourYear
-                        // _this.tableData[0].preContour = resp.data.data.preContour
-                        // _this.tableData[0].nextContourYear = resp.data.data.nextContourYear
-                        // _this.tableData[0].nextContour = resp.data.data.nextContour
-                    }
+                        console.log(1111111111111111)
+                        console.log(_this.tableData[0].preContour)
+                        }
                 }).catch(function (error) {
                     console.log(error)
                 })
-                _this.searchMapRele()
+                //_this.searchMapRele()
             },
             searchMapRele(){
                 const _this = this
@@ -298,6 +334,25 @@
                     console.log(error)
                 })
             },
+          searchMapEvolu(){
+            const _this = this
+           // _this.contourReleImg=[]
+            axios.get("http://localhost:8080/getcontourevolu", {
+              params: {
+                contourYear: _this.year,
+                contourName: _this.contour
+              }
+            },).then(function (resp) {
+              //console.log(resp.data)
+              if (resp.data.code === 200) {
+                console.log("=============================")
+                console.log(resp.data.data)
+                _this.evoluTableData=resp.data.data;
+              }
+            }).catch(function (error) {
+              console.log(error)
+            })
+          },
 
             //监听year的变化，当输入的年代变化时候，右侧的区划信息相应的清空。
             changeInput() {
