@@ -16,7 +16,14 @@
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmitTrack">查询轨迹</el-button>
+      </el-form-item>
     </el-form>
+
+    <viewer :images="objectTrackImg" >
+      <img v-for="src in objectTrackImg" :src="src" :key="src" width="400" height="233px">
+    </viewer>
     <el-table
         :data="ObjectTrackTableData"
         border
@@ -58,7 +65,7 @@
 
 <script>
 export default {
-  name: "PageFour",
+  name: "PageFive",
   data() {
     return {
       objectName: '',
@@ -71,6 +78,8 @@ export default {
           affect:'',
         }
       ],
+      //图片路径
+      objectTrackImg: [],
     }
   },
   methods: {
@@ -93,7 +102,27 @@ export default {
       }).catch(function (error) {
         console.log(error)
       })
-    }
+    },
+    onSubmitTrack() {
+      const _this = this
+
+      axios.get("http://localhost:8080/getobjecttrack", {
+        params: {
+          name:_this.objectName
+        }
+      }).then(function (resp) {
+        //console.log(resp.data)
+        if (resp.data.code === 200) {
+          console.log(resp.data.data)
+
+          //_this.viewShow = true
+          _this.objectTrackImg.push(resp.data.data)
+
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
   },
 }
 </script>

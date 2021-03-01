@@ -177,6 +177,7 @@
                     nextContour: []
 
                 },],
+
                 //图片路径
                 contourInfoImg: [],
 
@@ -308,7 +309,7 @@
                     if (resp.data.code === 200) {
                         //console.log(resp.data.data)
                         _this.tableData = resp.data.data
-                        console.log(1111111111111111)
+
                         console.log(_this.tableData[0].preContour)
                         }
                 }).catch(function (error) {
