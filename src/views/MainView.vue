@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>常规操作：基础数据（信息对象、演进信息、关联信息）的增删改操作。</h1>
+        <h1>信息对象的基础操作</h1>
 
         <el-form :inline="true">
             <el-form-item>
@@ -15,7 +15,7 @@
 
             <el-form-item>
                 <el-button type="primary" icon="el-icon-search" @click="searchObject()">搜索</el-button>
-                <el-button type="primary" icon="el-icon-search" @click="addObject()">新增</el-button>
+                <el-button type="primary"  @click="addObject()">新增</el-button>
             </el-form-item>
         </el-form>
 

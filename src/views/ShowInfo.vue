@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h1>演进信息提取及可视化</h1>
+        <h1>对象的演进及关联可视化</h1>
         <el-table
                 :data="tableData"
                 border
-                style="width: 100%">
+                style="width: 60%">
             <el-table-column
                     prop="objectId"
-                    label="id"
+                    label="对象唯一标识符"
                    >
             </el-table-column>
             <el-table-column
@@ -26,7 +26,8 @@
                     label="操作"
                     >
                 <template slot-scope="scope">
-                    <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+                    <el-button @click="handleClick(scope.row)" type="text" size="small">演进可视化</el-button>
+                  <el-button @click="handleClick(scope.row)" type="text" size="small">关联可视化</el-button>
                     <el-button type="text" size="small" @click="editObject(scope.row)">编辑</el-button>
                 </template>
             </el-table-column>

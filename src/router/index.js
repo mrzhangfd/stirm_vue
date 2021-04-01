@@ -6,8 +6,9 @@ import ShowInfo from "~/views/ShowInfo";
 import PageFour from "~/views/PageFour";
 import PageFive from "~/views/PageFive"
 import AddObject from "~/views/AddObject";
-import test from "~/views/test";
+import test from "~/views/Echarts";
 import ContourRele from "~/views/ContourRele";
+import Echarts from "~/views/Echarts";
 //引入-》使用
 Vue.use(VueRouter)
 
@@ -58,7 +59,7 @@ const routes = [
             {
                 path: '/test',
                 name: 'test',
-                component: test,
+                component: Echarts,
             }
         ]
     }

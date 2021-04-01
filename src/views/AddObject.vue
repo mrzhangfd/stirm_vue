@@ -1,16 +1,25 @@
 <template>
     <div>
-        <h1>添加信息对象{{prefix}}</h1>
+        <h1>添加信息对象</h1>
         <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="信息对象名称" label-width="100px">
-                <el-input v-model="form.name" ></el-input>
+              <el-col :span="8">
+                <el-input v-model="form.name"  ></el-input>
+              </el-col>
+
             </el-form-item>
             <el-form-item label="对象描述">
+              <el-col :span="8">
                 <el-input v-model="form.intro" ></el-input>
+              </el-col>
+
             </el-form-item>
 
             <el-form-item label="对象简介">
+              <el-col :span="8">
                 <el-input type="textarea" v-model="form.desc"></el-input>
+              </el-col>
+
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">添加</el-button>

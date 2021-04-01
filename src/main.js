@@ -6,6 +6,8 @@ import App from './App.vue'
 import router from "~/router";
 import Viewer from "v-viewer";
 import 'viewerjs/dist/viewer.css'
+
+
 Vue.use(ElementUI)
 Vue.use(Viewer, {
   defaultOptions: {
@@ -25,3 +27,6 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts

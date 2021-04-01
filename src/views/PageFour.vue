@@ -28,7 +28,7 @@
     <el-table
         :data="todayEventTableData"
         border
-        style="width: 100%">
+        style="width:50%">
       <el-table-column
           prop="ts"
           label="时间"
@@ -50,7 +50,10 @@
           prop="objectId"
           label="信息对象"
       >
+
       </el-table-column>
+
+
 
     </el-table>
   </div>
