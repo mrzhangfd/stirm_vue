@@ -32,6 +32,10 @@
                 </template>
             </el-table-column>
         </el-table>
+      <div class="Echarts">
+        <h1>123</h1>
+          <div id="evolu" style="width: 600px;height:400px;"></div>
+      </div>
 
     </div>
 
@@ -46,7 +50,82 @@
             },
             editObject(row){
                 const _this = this
-            }
+            },
+           myEcharts3(){
+            var _this=this
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = this.$echarts.init(document.getElementById('evolu'));
+
+            // 指定图表的配置项和数据
+            var option = {
+              title: {
+                text: '                                    Entity-oriented Association Network'
+              },
+              animationDurationUpdate: 1500,
+              animationEasingUpdate: 'quinticInOut',
+              series: [
+                {
+                  type: 'graph',
+                  layout: 'none',
+                  edgeSymbol: ['circle', 'arrow'],
+                  // progressiveThreshold: 700,
+                  data: result.nodes.map(function (node) {
+                    return {
+                      x: node.x,
+                      y: node.y,
+                      id: node.id,
+                      name: node.label,
+                      label:node.label,
+                      symbolSize: node.size,
+                      itemStyle: {
+                        normal: {
+                          color: node.color
+                        }
+                      }
+                    };
+                  }),
+                  edges: result.edges.map(function (edge) {
+                    return {
+                      source: edge.sourceID,
+                      target: edge.targetID,
+                      name: edge.note,
+                      label: {
+                        normal: {
+                          show: true,
+                          formatter: function (x) {
+                            return x.data.name;
+                          }
+                        }
+                      },
+                    };
+                  }),
+                  label: {
+                    normal:{
+                      show:true,
+                      position:'bottom'
+                    },
+                    emphasis: {
+                      position: 'bottom',
+                      show: true
+                    }
+                  },
+                  roam: true,
+                  focusNodeAdjacency: true,
+                  lineStyle: {
+                    normal: {
+                      width: 2,
+                      curveness: 0.3,
+                      opacity: 0.7
+                    }
+                  }
+                }
+              ]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+          },
+
         },
 
         data() {
@@ -66,7 +145,11 @@
             const _this = this
             _this.tableData = _this.$route.params.data
             console.log(_this.$route.params)
-        }
+        },
+      mounted() {
+          this.myEcharts3()
+      }
+
     }
 </script>
 
